@@ -3,6 +3,8 @@
     <filter-bar></filter-bar>
     <div class="inline field pull-left">
       <router-link v-bind:to="'pot'"><button class="ui primary button">Add pot</button></router-link>
+      <button class="ui primary button" v-on:click="onDelete">Delete</button>
+      <button class="ui primary button" v-on:click="onCsvExport">CSV</button>
     </div>
     <vuetable ref="vuetable"
       api-url="http://localhost:3000/pots/vue_table"
@@ -31,7 +33,8 @@ import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePagination
 import potCustomActions from './potCustomActions.vue'
 import potDetailRow from './potDetailRow.vue'
 import FilterBar from './FilterBar.vue'
-import AddEntityBar from './AddNewEntityButton.vue'
+
+import axios from 'axios'
 
 import Vue from 'vue'
 import VueEvents from 'vue-events'
@@ -40,7 +43,6 @@ Vue.use(VueEvents)
 Vue.component('pot-custom-actions', potCustomActions)
 Vue.component('pot-detail-row', potDetailRow)
 Vue.component('filter-bar', FilterBar)
-Vue.component('add-entity-bar', AddEntityBar)
 
 export default {
   components: {
@@ -109,6 +111,36 @@ export default {
     onFilterReset() {
       this.moreParams = {}
       Vue.nextTick(() => this.$refs.vuetable.refresh())
+    },
+    onDelete () {
+      if (window.confirm("Do you really want to delete pots of ids '" + this.$refs.vuetable.selectedTo.join("; ") + "'?")) {
+        var t = this;
+        var url = this.$baseUrl() + '/pot/' + this.$refs.vuetable.selectedTo.join("/")
+        axios.delete(url).then(function (response) {
+          t.$refs.vuetable.refresh()
+        }).catch(function (error) {
+          t.error = error
+        })
+      }
+    },
+    onCsvExport () {
+      var t = this;
+      var url = this.$baseUrl() + '/pots/example_csv' + '?array=[' + this.$refs.vuetable.selectedTo.join(",") + ']'
+      
+      axios.get(url).then(function (response) {
+
+        var a = document.createElement("a");        
+        document.body.appendChild(a);
+        a.style = "display: none";
+        var blob = new Blob([response.data], {type: "octet/stream"});
+        var url = window.URL.createObjectURL(blob);
+        a.href = url;
+        a.download = 'pot' + '.csv';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      }).catch(function (error) {
+        t.error = error
+      })
     }
   },
   mounted() {

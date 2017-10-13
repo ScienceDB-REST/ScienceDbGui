@@ -3,6 +3,8 @@
     <filter-bar></filter-bar>
     <div class="inline field pull-left">
       <router-link v-bind:to="'microbiome_profile'"><button class="ui primary button">Add microbiome_profile</button></router-link>
+      <button class="ui primary button" v-on:click="onDelete">Delete</button>
+      <button class="ui primary button" v-on:click="onCsvExport">CSV</button>
     </div>
     <vuetable ref="vuetable"
       api-url="http://localhost:3000/microbiome_profiles/vue_table"
@@ -31,6 +33,8 @@ import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePagination
 import microbiome_profileCustomActions from './microbiome_profileCustomActions.vue'
 import microbiome_profileDetailRow from './microbiome_profileDetailRow.vue'
 import FilterBar from './FilterBar.vue'
+
+import axios from 'axios'
 
 import Vue from 'vue'
 import VueEvents from 'vue-events'
@@ -95,6 +99,36 @@ export default {
     onFilterReset() {
       this.moreParams = {}
       Vue.nextTick(() => this.$refs.vuetable.refresh())
+    },
+    onDelete () {
+      if (window.confirm("Do you really want to delete microbiome_profiles of ids '" + this.$refs.vuetable.selectedTo.join("; ") + "'?")) {
+        var t = this;
+        var url = this.$baseUrl() + '/microbiome_profile/' + this.$refs.vuetable.selectedTo.join("/")
+        axios.delete(url).then(function (response) {
+          t.$refs.vuetable.refresh()
+        }).catch(function (error) {
+          t.error = error
+        })
+      }
+    },
+    onCsvExport () {
+      var t = this;
+      var url = this.$baseUrl() + '/microbiome_profiles/example_csv' + '?array=[' + this.$refs.vuetable.selectedTo.join(",") + ']'
+      
+      axios.get(url).then(function (response) {
+
+        var a = document.createElement("a");        
+        document.body.appendChild(a);
+        a.style = "display: none";
+        var blob = new Blob([response.data], {type: "octet/stream"});
+        var url = window.URL.createObjectURL(blob);
+        a.href = url;
+        a.download = 'microbiome_profile' + '.csv';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      }).catch(function (error) {
+        t.error = error
+      })
     }
   },
   mounted() {

@@ -3,6 +3,8 @@
     <filter-bar></filter-bar>
     <div class="inline field pull-left">
       <router-link v-bind:to="'soil_sample'"><button class="ui primary button">Add soil_sample</button></router-link>
+      <button class="ui primary button" v-on:click="onDelete">Delete</button>
+      <button class="ui primary button" v-on:click="onCsvExport">CSV</button>
     </div>
     <vuetable ref="vuetable"
       api-url="http://localhost:3000/soil_samples/vue_table"
@@ -31,6 +33,8 @@ import VuetablePaginationInfo from 'vuetable-2/src/components/VuetablePagination
 import soil_sampleCustomActions from './soil_sampleCustomActions.vue'
 import soil_sampleDetailRow from './soil_sampleDetailRow.vue'
 import FilterBar from './FilterBar.vue'
+
+import axios from 'axios'
 
 import Vue from 'vue'
 import VueEvents from 'vue-events'
@@ -99,6 +103,36 @@ export default {
     onFilterReset() {
       this.moreParams = {}
       Vue.nextTick(() => this.$refs.vuetable.refresh())
+    },
+    onDelete () {
+      if (window.confirm("Do you really want to delete soil_samples of ids '" + this.$refs.vuetable.selectedTo.join("; ") + "'?")) {
+        var t = this;
+        var url = this.$baseUrl() + '/soil_sample/' + this.$refs.vuetable.selectedTo.join("/")
+        axios.delete(url).then(function (response) {
+          t.$refs.vuetable.refresh()
+        }).catch(function (error) {
+          t.error = error
+        })
+      }
+    },
+    onCsvExport () {
+      var t = this;
+      var url = this.$baseUrl() + '/soil_samples/example_csv' + '?array=[' + this.$refs.vuetable.selectedTo.join(",") + ']'
+      
+      axios.get(url).then(function (response) {
+
+        var a = document.createElement("a");        
+        document.body.appendChild(a);
+        a.style = "display: none";
+        var blob = new Blob([response.data], {type: "octet/stream"});
+        var url = window.URL.createObjectURL(blob);
+        a.href = url;
+        a.download = 'soil_sample' + '.csv';
+        a.click();
+        window.URL.revokeObjectURL(url);
+      }).catch(function (error) {
+        t.error = error
+      })
     }
   },
   mounted() {

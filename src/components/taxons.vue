@@ -1,5 +1,5 @@
 <template>
-  <div class="ui container">   
+  <div class="ui container">
     <collapse accordion>
       <collapse-item title="Search" actived>
         <filter-bar></filter-bar>
@@ -17,7 +17,7 @@
         <extended-search-bar :fields="fields"></extended-search-bar>
       </collapse-item>
     </collapse>    
-    
+
     <vuetable ref="vuetable"
       api-url="http://localhost:3000/taxons/vue_table"
       :fields="fields"
@@ -139,7 +139,7 @@ export default {
     },
     onCsvExport() {
       var t = this;
-      var url = 'http://localhost:3000/taxons/example_csv' + '?excel=true' + '&array=[' + this.$refs.vuetable.selectedTo.join(",") + ']'
+      var url = 'http://localhost:3000/taxons/example_csv' + '?array=[' + this.$refs.vuetable.selectedTo.join(",") + ']'
       axios.get(url).then(function(response) {
         var a = document.createElement("a");        
         document.body.appendChild(a);
