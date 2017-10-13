@@ -38,7 +38,7 @@ export default {
       var t = this
       t.error = null
       if (this.$route.params.id) {
-        axios.get('http://localhost:3000/field_plot/' +
+        axios.get(this.$baseUrl() + '/field_plot/' +
           this.$route.params.id).then(function (response) {
             t.field_plot = response.data
           }, function (err) {
@@ -48,7 +48,7 @@ export default {
     },
     onSubmit() {
       var t = this;
-      var url = 'http://localhost:3000/field_plot'
+      var url = this.$baseUrl() + '/field_plot'
       if (t.$route.params.id) { 
         url += '/' + t.$route.params.id
       }

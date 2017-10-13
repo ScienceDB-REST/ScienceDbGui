@@ -38,7 +38,7 @@ export default {
       var t = this
       t.error = null
       if (this.$route.params.id) {
-        axios.get('http://localhost:3000/microbiome_sample/' +
+        axios.get(this.$baseUrl() + '/microbiome_sample/' +
           this.$route.params.id).then(function (response) {
             t.microbiome_sample = response.data
           }, function (err) {
@@ -48,7 +48,7 @@ export default {
     },
     onSubmit() {
       var t = this;
-      var url = 'http://localhost:3000/microbiome_sample'
+      var url = this.$baseUrl() + '/microbiome_sample'
       if (t.$route.params.id) { 
         url += '/' + t.$route.params.id
       }

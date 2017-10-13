@@ -30,7 +30,7 @@ export default {
   methods: {
     onSubmit() {
       var t = this;
-      var url = 'http://localhost:3000/individuals'
+      var url = this.$baseUrl() + '/individuals'
       axios.post(url, t.individual).then(function (response) {
         t.$router.push('/individuals')
       }).catch( function (error) {

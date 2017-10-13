@@ -38,7 +38,7 @@ export default {
       var t = this
       t.error = null
       if (this.$route.params.id) {
-        axios.get('http://localhost:3000/taxon/' +
+        axios.get(this.$baseUrl() + '/taxon/' +
           this.$route.params.id).then(function (response) {
             t.taxon = response.data
           }, function (err) {
@@ -48,7 +48,7 @@ export default {
     },
     onSubmit() {
       var t = this;
-      var url = 'http://localhost:3000/taxon'
+      var url = this.$baseUrl() + '/taxon'
       if (t.$route.params.id) { 
         url += '/' + t.$route.params.id
       }

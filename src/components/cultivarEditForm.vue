@@ -38,7 +38,7 @@ export default {
       var t = this
       t.error = null
       if (this.$route.params.id) {
-        axios.get('http://localhost:3000/cultivar/' +
+        axios.get(this.$baseUrl() + '/cultivar/' +
           this.$route.params.id).then(function (response) {
             t.cultivar = response.data
           }, function (err) {
@@ -48,7 +48,7 @@ export default {
     },
     onSubmit() {
       var t = this;
-      var url = 'http://localhost:3000/cultivar'
+      var url = this.$baseUrl() + '/cultivar'
       if (t.$route.params.id) { 
         url += '/' + t.$route.params.id
       }

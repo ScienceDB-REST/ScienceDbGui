@@ -30,7 +30,7 @@ export default {
   methods: {
     onSubmit() {
       var t = this;
-      var url = 'http://localhost:3000/taxons'
+      var url = this.$baseUrl() + '/taxons'
       axios.post(url, t.taxon).then(function (response) {
         t.$router.push('/taxons')
       }).catch( function (error) {

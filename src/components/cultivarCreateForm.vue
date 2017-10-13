@@ -30,7 +30,7 @@ export default {
   methods: {
     onSubmit() {
       var t = this;
-      var url = 'http://localhost:3000/cultivars'
+      var url = this.$baseUrl() + '/cultivars'
       axios.post(url, t.cultivar).then(function (response) {
         t.$router.push('/cultivars')
       }).catch( function (error) {

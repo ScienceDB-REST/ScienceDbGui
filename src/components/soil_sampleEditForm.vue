@@ -38,7 +38,7 @@ export default {
       var t = this
       t.error = null
       if (this.$route.params.id) {
-        axios.get('http://localhost:3000/soil_sample/' +
+        axios.get(this.$baseUrl() + '/soil_sample/' +
           this.$route.params.id).then(function (response) {
             t.soil_sample = response.data
           }, function (err) {
@@ -48,7 +48,7 @@ export default {
     },
     onSubmit() {
       var t = this;
-      var url = 'http://localhost:3000/soil_sample'
+      var url = this.$baseUrl() + '/soil_sample'
       if (t.$route.params.id) { 
         url += '/' + t.$route.params.id
       }
