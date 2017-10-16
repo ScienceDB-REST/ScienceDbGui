@@ -1,10 +1,9 @@
 const ScienceDbGlobals = {
-    install(Vue, options) {
-      Vue.prototype.$mainUrl = 'Main Url'
-      Vue.prototype.$mainUrl = function() {
-           return 'Main Url'
-      }
+  install(Vue, options) {
+    Vue.prototype.$baseUrl = function() {
+      return 'http://localhost:3000'
     }
-  };
+  }
+};
 
-  export default ScienceDbGlobals;
+export default ScienceDbGlobals;
