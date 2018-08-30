@@ -1,6 +1,6 @@
 <template>
   <div>
-  <!-- <div class="col-sm-7 col-sm-offset-7"> -->
+   <div class="col-sm-7 col-sm-offset-7">
     <h2>Welcome to Reconstruct-DB</h2>
     <p>
       This page provides documentation and help to the usage of
@@ -48,6 +48,7 @@
       </pre>
     </p>
   </div>
+  </div>
 </template>
 
 <script>
@@ -62,7 +63,7 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- Add "scoped" attribute to limit CSS to this component only
 <style scoped>
 h1, h2 {
   font-weight: normal;
@@ -78,4 +79,4 @@ li {
 a {
   color: #42b983;
 }
-</style>
+</style>-->
