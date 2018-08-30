@@ -1,12 +1,18 @@
 <template>
   <div id="app">
+    <side-nav></side-nav>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import sideNav from '@/components/SideNav'
+
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    sideNav
+  }
 }
 </script>
 

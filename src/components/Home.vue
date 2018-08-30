@@ -1,8 +1,5 @@
 <template>
   <div>
-  <app-nav></app-nav>
-  <div v-if="isLoggedIn()">
-
   <!-- <div class="col-sm-7 col-sm-offset-7"> -->
     <h2>Welcome to Reconstruct-DB</h2>
     <p>
@@ -51,27 +48,15 @@
       </pre>
     </p>
   </div>
-<!-- </div> -->
-</div>
 </template>
 
 <script>
-import appNav from './AppNav'
-import { isLoggedIn } from '../auth'
 
 export default {
   name: 'Home',
-  components: {
-    appNav
-  },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
-    }
-  },
-  methods: {
-    isLoggedIn () {
-      return isLoggedIn()
     }
   }
 }
