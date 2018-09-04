@@ -96,7 +96,8 @@ export default {
 
 .main {
     margin-left: 280px; /* Same as the width of the sidenav */
-    overflow: scroll;
+    height: 100%;
+    overflow-x: scroll;
 }
 
 @media screen and (max-height: 450px) {
