@@ -5,6 +5,7 @@
       <router-link v-bind:to="'field_plot'"><button class="ui primary button">Add field_plot</button></router-link>
       <button class="ui primary button" @click="downloadExampleCsv">CSV Example Table</button>
       <router-link v-bind:to="'/field_plots/upload_csv'"><button class="ui primary button">CSV Upload</button></router-link>
+      <button class="ui primary button" @click="downloadCsv">CSV Export</button>
     </div>
     <vuetable ref="vuetable"
       :api-url="this.$baseUrl() + '/field_plots/vue_table'"
@@ -173,6 +174,29 @@ export default {
         const link = document.createElement('a');
         link.href = url;
         link.setAttribute('download', 'field_plots.csv');
+        document.body.appendChild(link);
+        link.click();
+      }).catch(res => {
+        var err = (res && res.response && res.response.data && res.response
+          .data.message ?
+          res.response.data.message : res)
+        t.$root.$emit('globalError', err)
+        t.$router.push('/')
+      })
+    },
+    downloadCsv: function() {
+      var t = this
+      axios.get(t.$baseUrl() + '/field_plots/csv_export', {
+        headers: {
+          'authorization': `Bearer ${t.$getAuthToken()}`,
+          'Accept': 'application/json'
+        },
+        responseType: 'blob'
+      }).then((response) => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'exported_field_plots.csv');
         document.body.appendChild(link);
         link.click();
       }).catch(res => {
