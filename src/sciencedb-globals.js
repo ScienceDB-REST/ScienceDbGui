@@ -1,6 +1,6 @@
 module.exports.install = function(Vue, options) {
   Vue.prototype.$baseUrl = function() {
-    return "http://api.reconstructdb.org"
+    return "//api.reconstructdb.org"
   }
   Vue.prototype.$defaultDateFormat = function() {
     return "yy-mm-dd"
