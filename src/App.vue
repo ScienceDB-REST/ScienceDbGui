@@ -12,7 +12,6 @@
         <a href="#/plant_measurements">Plant-Measurements</a>
         <a href="#/sample_measurements">Sample-Measurements</a>
         <a href="#/transcript_counts">Transcript-Counts</a>
-        <a href="#/sample_to_sample_measurements">Samples-Measurements-Associations</a>
         <a href="#/microbiome_otus">Microbiome-OTUs</a>
         <a href="#/" v-on:click="logout">Logout</a>
       </div>
