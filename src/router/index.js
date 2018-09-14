@@ -30,10 +30,6 @@ import samples from '@/components/samples'
 import sampleCreate from '@/components/sampleCreateForm'
 import sampleEdit from '@/components/sampleEditForm'
 import sampleUploadCsv from '@/components/sampleUploadCsvForm'
-import sample_measurements from '@/components/sample_measurements'
-import sample_measurementCreate from '@/components/sample_measurementCreateForm'
-import sample_measurementEdit from '@/components/sample_measurementEditForm'
-import sample_measurementUploadCsv from '@/components/sample_measurementUploadCsvForm'
 import taxons from '@/components/taxons'
 import taxonCreate from '@/components/taxonCreateForm'
 import taxonEdit from '@/components/taxonEditForm'
@@ -42,10 +38,10 @@ import transcript_counts from '@/components/transcript_counts'
 import transcript_countCreate from '@/components/transcript_countCreateForm'
 import transcript_countEdit from '@/components/transcript_countEditForm'
 import transcript_countUploadCsv from '@/components/transcript_countUploadCsvForm'
-import sample_to_sample_measurements from '@/components/sample_to_sample_measurements'
-import sample_to_sample_measurementCreate from '@/components/sample_to_sample_measurementCreateForm'
-import sample_to_sample_measurementEdit from '@/components/sample_to_sample_measurementEditForm'
-import sample_to_sample_measurementUploadCsv from '@/components/sample_to_sample_measurementUploadCsvForm'
+import sample_measurements from '@/components/sample_measurements'
+import sample_measurementCreate from '@/components/sample_measurementCreateForm'
+import sample_measurementEdit from '@/components/sample_measurementEditForm'
+import sample_measurementUploadCsv from '@/components/sample_measurementUploadCsvForm'
 
 Vue.use(Router)
 
@@ -200,26 +196,6 @@ var routes = [{
     component: sampleCreate,
   },
   {
-    path: '/sample_measurements',
-    name: 'sample_measurements',
-    component: sample_measurements,
-  },
-  {
-    path: '/sample_measurement/:id',
-    name: 'sample_measurementEdit',
-    component: sample_measurementEdit,
-  },
-  {
-    path: '/sample_measurements/upload_csv',
-    name: 'sample_measurementUploadCsv',
-    component: sample_measurementUploadCsv
-  },
-  {
-    path: '/sample_measurement',
-    name: 'sample_measurementCreate',
-    component: sample_measurementCreate,
-  },
-  {
     path: '/taxons',
     name: 'taxons',
     component: taxons,
@@ -260,24 +236,24 @@ var routes = [{
     component: transcript_countCreate,
   },
   {
-    path: '/sample_to_sample_measurements',
-    name: 'sample_to_sample_measurements',
-    component: sample_to_sample_measurements,
+    path: '/sample_measurements',
+    name: 'sample_measurements',
+    component: sample_measurements,
   },
   {
-    path: '/sample_to_sample_measurement/:id',
-    name: 'sample_to_sample_measurementEdit',
-    component: sample_to_sample_measurementEdit,
+    path: '/sample_measurement/:id',
+    name: 'sample_measurementEdit',
+    component: sample_measurementEdit,
   },
   {
-    path: '/sample_to_sample_measurements/upload_csv',
-    name: 'sample_to_sample_measurementUploadCsv',
-    component: sample_to_sample_measurementUploadCsv
+    path: '/sample_measurements/upload_csv',
+    name: 'sample_measurementUploadCsv',
+    component: sample_measurementUploadCsv
   },
   {
-    path: '/sample_to_sample_measurement',
-    name: 'sample_to_sample_measurementCreate',
-    component: sample_to_sample_measurementCreate,
+    path: '/sample_measurement',
+    name: 'sample_measurementCreate',
+    component: sample_measurementCreate,
   }
 ];
 

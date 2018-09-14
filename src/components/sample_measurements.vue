@@ -81,10 +81,6 @@ export default {
             name: 'unit',
             sortField: 'unit'
           },
-                  {
-            name: 'is_average',
-            sortField: 'is_average'
-          },
                 {
           name: '__component:sample_measurement-custom-actions',
           title: 'Actions',

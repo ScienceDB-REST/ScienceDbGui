@@ -40,31 +40,20 @@
     </div>
 
   
-    <div id="sample_measurement-is_average-div" class="form-group">
-            <label>is_average</label>
       
-  <input type="checkbox" v-model="sample_measurement.is_average" class="form-control"/>
-
-
-      <div id="sample_measurement-is_average-err" v-if="validationError('is_average')" class="alert alert-danger">
-        {{validationError('is_average').message}}
-      </div>
+    <div id="sample_measurement-sample-div" class="form-group">
+      <label>sample</label>
+      <foreign-key-form-element
+        :searchUrl = "this.$baseUrl() + '/samples'"
+        v-model:foreignKey="sample_measurement.sample_id"
+        label="id"
+                subLabel="material"
+                valueKey="name"
+        v-bind:initialInput="sampleInitialLabel">
+      </foreign-key-form-element>
     </div>
 
   
-  
-
-      
-    <div id="sample_measurement-samples-div" class="form-group">
-      <label>samples</label>
-      <has-many-form-element
-        :associatedElements.sync="metabolite_measurement.samples"
-        :searchUrl="this.$baseUrl() + 'samples'"
-        label="name"
-        subLabel="material"
-        valueKey="id">
-      </has-many-form-element>
-    </div>
 
   
   
@@ -74,15 +63,25 @@
 <script>
 import Vue from 'vue'
 
+import foreignKeyFormElement from './foreignKeyFormElement.vue'
 
-import hasManyFormElemn from './hasManyFormElemn.vue'
+Vue.component('foreign-key-form-element', foreignKeyFormElement)
 
-Vue.component('has-many-form-element', hasManyFormElemn)
 
 export default {
   props: [ 'sample_measurement', 'errors' ],
   computed: {
-    },
+          sampleInitialLabel: function () {
+      var x = this.sample_measurement.sample
+      if (x !== null && typeof x === 'object' &&
+          x['id'] !== null &&
+          typeof x['id'] !== 'undefined') {
+        return x['id']
+      } else {
+        return ''
+      }
+    }
+        },
   methods: {
     validationError(modelField) {
       if (this.errors == null) return false;
