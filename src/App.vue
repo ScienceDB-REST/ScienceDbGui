@@ -13,6 +13,8 @@
         <a href="#/sample_measurements">Sample-Measurements</a>
         <a href="#/transcript_counts">Transcript-Counts</a>
         <a href="#/microbiome_otus">Microbiome-OTUs</a>
+        <a href="https://shiny.reconstructdb.org">ReconstructDb Shiny</a>
+        <a href="https://graphql.reconstructdb.org/graphiql">ReconstructDb GraphQL</a>
         <a href="#/" v-on:click="logout">Logout</a>
       </div>
       <div class="main">

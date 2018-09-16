@@ -21,6 +21,14 @@
         <span>{{rowData.tissue_or_condition}}</span>
       </div>
     
+      
+    <div id="transcript_count-individual-div">
+      <div class="inline field">
+        <label>individual:</label>
+        <span>{{individualInitialLabel}}</span>
+      </div>
+    </div>
+
   
   
   </div>
@@ -38,7 +46,17 @@ export default {
     }
   },
   computed: {
-    },
+          individualInitialLabel: function () {
+      var x = this.rowData.individual
+      if (x !== null && typeof x === 'object' &&
+          x['name'] !== null &&
+          typeof x['name'] !== 'undefined') {
+        return x['name']
+      } else {
+        return ''
+      }
+    }
+        },
   methods: {
     onClick (event) {
       console.log('my-detail-row: on-click', event.target)

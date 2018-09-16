@@ -52,6 +52,19 @@
     </div>
 
   
+      
+    <div id="transcript_count-individual-div" class="form-group">
+      <label>individual</label>
+      <foreign-key-form-element
+        :searchUrl = "this.$baseUrl() + '/individuals'"
+        v-model:foreignKey="transcript_count.individual_id"
+        label="name"
+                subLabel="sowing_date"
+                valueKey="id"
+        v-bind:initialInput="individualInitialLabel">
+      </foreign-key-form-element>
+    </div>
+
   
 
   
@@ -60,13 +73,27 @@
 </template>
 
 <script>
+import Vue from 'vue'
 
+import foreignKeyFormElement from './foreignKeyFormElement.vue'
+
+Vue.component('foreign-key-form-element', foreignKeyFormElement)
 
 
 export default {
   props: [ 'transcript_count', 'errors' ],
   computed: {
-    },
+          individualInitialLabel: function () {
+      var x = this.transcript_count.individual
+      if (x !== null && typeof x === 'object' &&
+          x['name'] !== null &&
+          typeof x['name'] !== 'undefined') {
+        return x['name']
+      } else {
+        return ''
+      }
+    }
+        },
   methods: {
     validationError(modelField) {
       if (this.errors == null) return false;
