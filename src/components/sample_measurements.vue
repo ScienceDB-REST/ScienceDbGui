@@ -81,6 +81,10 @@ export default {
             name: 'unit',
             sortField: 'unit'
           },
+                  {
+            name: 'CAS_number',
+            sortField: 'CAS_number'
+          },
                 {
           name: '__component:sample_measurement-custom-actions',
           title: 'Actions',

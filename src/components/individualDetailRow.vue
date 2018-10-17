@@ -16,6 +16,18 @@
         <label>harvest_date:</label>
         <span>{{rowData.harvest_date}}</span>
       </div>
+          <div class="inline field">
+        <label>developmental_state:</label>
+        <span>{{rowData.developmental_state}}</span>
+      </div>
+          <div class="inline field">
+        <label>life_cycle_phase:</label>
+        <span>{{rowData.life_cycle_phase}}</span>
+      </div>
+          <div class="inline field">
+        <label>location_type:</label>
+        <span>{{rowData.location_type}}</span>
+      </div>
     
       
     <div id="individual-cultivar-div">

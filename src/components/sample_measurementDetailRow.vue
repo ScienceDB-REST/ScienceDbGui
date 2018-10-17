@@ -16,6 +16,10 @@
         <label>unit:</label>
         <span>{{rowData.unit}}</span>
       </div>
+          <div class="inline field">
+        <label>CAS_number:</label>
+        <span>{{rowData.CAS_number}}</span>
+      </div>
     
       
     <div id="sample_measurement-sample-div">

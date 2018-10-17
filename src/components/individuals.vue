@@ -81,6 +81,18 @@ export default {
             name: 'harvest_date',
             sortField: 'harvest_date'
           },
+                  {
+            name: 'developmental_state',
+            sortField: 'developmental_state'
+          },
+                  {
+            name: 'life_cycle_phase',
+            sortField: 'life_cycle_phase'
+          },
+                  {
+            name: 'location_type',
+            sortField: 'location_type'
+          },
                 {
           name: '__component:individual-custom-actions',
           title: 'Actions',

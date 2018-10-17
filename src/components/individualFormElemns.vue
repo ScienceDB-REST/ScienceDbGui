@@ -40,6 +40,42 @@
     </div>
 
   
+    <div id="individual-developmental_state-div" class="form-group">
+            <label>developmental_state</label>
+      
+  <input type="text" v-model="individual.developmental_state" class="form-control"/>
+
+
+      <div id="individual-developmental_state-err" v-if="validationError('developmental_state')" class="alert alert-danger">
+        {{validationError('developmental_state').message}}
+      </div>
+    </div>
+
+  
+    <div id="individual-life_cycle_phase-div" class="form-group">
+            <label>life_cycle_phase</label>
+      
+  <input type="text" v-model="individual.life_cycle_phase" class="form-control"/>
+
+
+      <div id="individual-life_cycle_phase-err" v-if="validationError('life_cycle_phase')" class="alert alert-danger">
+        {{validationError('life_cycle_phase').message}}
+      </div>
+    </div>
+
+  
+    <div id="individual-location_type-div" class="form-group">
+            <label>location_type</label>
+      
+  <input type="text" v-model="individual.location_type" class="form-control"/>
+
+
+      <div id="individual-location_type-err" v-if="validationError('location_type')" class="alert alert-danger">
+        {{validationError('location_type').message}}
+      </div>
+    </div>
+
+  
       
     <div id="individual-cultivar-div" class="form-group">
       <label>cultivar</label>

@@ -101,6 +101,10 @@ export default {
             name: 'barcode_sequence',
             sortField: 'barcode_sequence'
           },
+                  {
+            name: 'life_cycle_phase',
+            sortField: 'life_cycle_phase'
+          },
                 {
           name: '__component:sample-custom-actions',
           title: 'Actions',

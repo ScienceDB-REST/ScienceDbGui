@@ -40,6 +40,18 @@
     </div>
 
   
+    <div id="sample_measurement-CAS_number-div" class="form-group">
+            <label>CAS_number</label>
+      
+  <input type="text" v-model="sample_measurement.CAS_number" class="form-control"/>
+
+
+      <div id="sample_measurement-CAS_number-err" v-if="validationError('CAS_number')" class="alert alert-danger">
+        {{validationError('CAS_number').message}}
+      </div>
+    </div>
+
+  
       
     <div id="sample_measurement-sample-div" class="form-group">
       <label>sample</label>

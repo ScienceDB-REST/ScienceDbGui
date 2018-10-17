@@ -100,6 +100,18 @@
     </div>
 
   
+    <div id="sample-life_cycle_phase-div" class="form-group">
+            <label>life_cycle_phase</label>
+      
+  <input type="text" v-model="sample.life_cycle_phase" class="form-control"/>
+
+
+      <div id="sample-life_cycle_phase-err" v-if="validationError('life_cycle_phase')" class="alert alert-danger">
+        {{validationError('life_cycle_phase').message}}
+      </div>
+    </div>
+
+  
       
     <div id="sample-individual-div" class="form-group">
       <label>individual</label>

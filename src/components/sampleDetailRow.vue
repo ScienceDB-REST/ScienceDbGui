@@ -36,6 +36,10 @@
         <label>barcode_sequence:</label>
         <span>{{rowData.barcode_sequence}}</span>
       </div>
+          <div class="inline field">
+        <label>life_cycle_phase:</label>
+        <span>{{rowData.life_cycle_phase}}</span>
+      </div>
     
       
     <div id="sample-individual-div">
