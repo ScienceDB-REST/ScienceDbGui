@@ -1,3 +1,7 @@
+
+# :no_entry: DEPRECATED 
+The restful approach for ScienceDB has been changed to graphql approach for new versions visit [this site](https://github.com/ScienceDb)
+
 # science_db_gui
 
 > A Vue.js project
